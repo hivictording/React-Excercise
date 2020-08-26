@@ -1,41 +1,21 @@
 import React from "react";
 import ReactDom from "react-dom";
-import "./index.css";
-import Student from "./Student";
 
-const obj = [
-  {
-    name: "vding",
-    age: 45,
-    gender: "male",
-  },
-  {
-    name: "mary",
-    age: 38,
-    gender: "female",
-  },
-];
+import "./css/index.scss";
+
+import data from "./data";
+// using index.js or package.json as the default so you don't specify the specific js file
+import StudentList from "./studentList";
+import PersonList from "./personList";
 
 // function App({ name, age, gender }) {
-const App = ({ obj }) => {
+const App = () => {
   return (
     <div>
-      {obj.map((item, index) => (
-        <Person {...item} key={index}>
-          <h2>This is a child element {index}</h2>
-        </Person>
-      ))}
-      <Student />
+      <PersonList data={data} />
+      <StudentList />
     </div>
   );
 };
 
-// Component Child
-const Person = ({ name, gender, age, children }) => (
-  <div className="person">
-    <h1>{`My name is ${name},my gender is ${gender} and my age is ${age}`}</h1>
-    {children}
-  </div>
-);
-
-ReactDom.render(<App obj={obj} />, document.getElementById("root"));
+ReactDom.render(<App />, document.getElementById("root"));
