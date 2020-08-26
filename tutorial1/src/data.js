@@ -23,9 +23,9 @@ export const studentList = [
     score: 90,
   },
   {
-    name: "Mario",
-    grade: 6,
-    score: 100,
+    name: 200,
+    grade: "aaa",
+    score: 150,
   },
   {
     name: "Mary",

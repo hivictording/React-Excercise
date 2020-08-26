@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import person from "../static/image/person.jpg";
 
+import PropTypes from "prop-types";
+
 export default class Student extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showInfo: false,
       showImg: true,
     };
   }
+
+  // static propTypes = {
+  //   // name: PropTypes.string,
+  //   grade: PropTypes.number,
+  //   score: PropTypes.number,
+  //   student: (props, attr) => {
+  //     console.log(props[attr]);
+  //     if (typeof props[attr].name !== String) {
+  //       throw new Error(`Name is not string`);
+  //     }
+  //   },
+  // };
 
   click = (event) => {
     this.setState({
@@ -18,7 +33,7 @@ export default class Student extends Component {
   };
 
   render() {
-    const { name, grade, score } = this.props.student;
+    const { name, grade, score } = this.props;
     return (
       <article onClick={this.click} className="student">
         <div>
@@ -32,3 +47,14 @@ export default class Student extends Component {
     );
   }
 }
+
+Student.propTypes = {
+  name: PropTypes.string,
+  grade: PropTypes.number,
+  score: PropTypes.number,
+  student: PropTypes.shape({
+    name: PropTypes.string,
+    grade: PropTypes.number,
+    score: PropTypes.number,
+  }),
+};

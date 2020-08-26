@@ -8,7 +8,7 @@ export default class StudentList extends Component {
     return (
       <section>
         {studentList.map((student, index) => (
-          <Student key={index} student={student} />
+          <Student key={index} {...student} student={student} />
         ))}
       </section>
     );
