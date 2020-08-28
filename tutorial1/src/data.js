@@ -32,4 +32,7 @@ export const studentList = [
     grade: 3,
     score: 80,
   },
+  {
+    name: "Cisco",
+  },
 ];

@@ -50,11 +50,17 @@ export default class Student extends Component {
 
 Student.propTypes = {
   name: PropTypes.string,
-  grade: PropTypes.number,
+  grade: PropTypes.number.isRequired,
   score: PropTypes.number,
   student: PropTypes.shape({
     name: PropTypes.string,
     grade: PropTypes.number,
     score: PropTypes.number,
   }),
+};
+
+Student.defaultProps = {
+  name: "SonicWALL",
+  grade: "grade 12",
+  score: 90,
 };
