@@ -1,0 +1,16 @@
+html {
+  font-size: calc(1em + 0.8vw);
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 auto;
+}

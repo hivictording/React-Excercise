@@ -1,0 +1,26 @@
+.form {
+  background: lightgray;
+  padding: 1em 0;
+
+  .input-group {
+    padding: 0.3em;
+    width: 90%;
+    margin: 0.5em auto;
+
+    * {
+      font-size: 1.2em;
+    }
+
+    label {
+      text-transform: capitalize;
+      display: block;
+      margin-bottom: 0.2em;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.2em 0.5em;
+    }
+  }
+}
