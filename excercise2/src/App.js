@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./components/form";
+import UncontrolledForm from "./components/form/uncontrolledForm";
 import People from "./components/people";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
     return (
       <>
         <Form addUser={this.addUser} />
+        <UncontrolledForm addUser={this.addUser} />
         <People people={people} />
       </>
     );

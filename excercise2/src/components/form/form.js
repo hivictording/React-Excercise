@@ -25,6 +25,7 @@ export default class Form extends Component {
     const { addUser } = this.props;
     return (
       <form className="form">
+        <h2>Controlled Form</h2>
         <div className="input-group">
           <label htmlFor="username">username</label>
           <input
