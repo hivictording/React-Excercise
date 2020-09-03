@@ -37,7 +37,7 @@ export default class UncontrolledForm extends Component {
     const { usernameEmpty, passwdEmpty, emailEmpty } = this.props;
 
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
+      <form className="uncontrolled-form" onSubmit={this.handleSubmit}>
         <h2>Uncontrolled Form</h2>
         <div className="input-group">
           <label htmlFor="uf_username">username</label>
