@@ -1,0 +1,12 @@
+html {
+  box-sizing: border-box;
+  font-size: calc(0.8em + 0.8vw);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
