@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 
-export default class TodoForm extends Component {
-  render() {
-    return <div>Hello from todoForm</div>;
-  }
-}
+import { withComponent } from "../hoComponent";
+
+// export default class TodoForm extends Component {
+//   render() {
+//     return <div>Hello from todoForm</div>;
+//   }
+// }
+
+const todoForm = (props) => {
+  console.log(props);
+  return (
+    <h3>
+      Hello from {props.name2} {props.name}
+    </h3>
+  );
+};
+
+export default withComponent(todoForm, "NSSP");

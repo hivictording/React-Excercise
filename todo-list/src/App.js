@@ -30,7 +30,7 @@ export default class App extends Component {
       value={{ ...this.state, switchColor: this.switchColor }}
       > */}
         <Header />
-        <TodoForm />
+        <TodoForm name2="sonicwall" />
         <TodoList />
       </ColorProvider>
     );
