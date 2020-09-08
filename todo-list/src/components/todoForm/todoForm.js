@@ -17,4 +17,5 @@ const todoForm = (props) => {
   );
 };
 
+// higher order component
 export default withComponent(todoForm, "NSSP");

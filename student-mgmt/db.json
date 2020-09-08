@@ -1,0 +1,32 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "username": "hivictor",
+      "name": "Victor Ding",
+      "gender": "Male",
+      "age": 45,
+      "country": "Canada",
+      "habit": ["sports", "reading", "travel"],
+      "others": {
+        "grade": 1,
+        "department": "computer science",
+        "address": "80 copper creek drive"
+      }
+    },
+    {
+      "id": 2,
+      "username": "himary",
+      "name": "Mary Zhu",
+      "gender": "Female",
+      "age": 38,
+      "country": "USA",
+      "habit": ["reading", "travel"],
+      "others": {
+        "grade": 2,
+        "department": "biology",
+        "address": "100 Finch Avenue"
+      }
+    }
+  ]
+}
