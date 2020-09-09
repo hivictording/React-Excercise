@@ -7,7 +7,11 @@
       "gender": "Male",
       "age": 45,
       "country": "Canada",
-      "habit": ["sports", "reading", "travel"],
+      "habit": [
+        "sports",
+        "reading",
+        "travel"
+      ],
       "others": {
         "grade": 1,
         "department": "computer science",
@@ -21,12 +25,62 @@
       "gender": "Female",
       "age": 38,
       "country": "USA",
-      "habit": ["reading", "travel"],
+      "habit": [
+        "reading",
+        "travel"
+      ],
       "others": {
         "grade": 2,
         "department": "biology",
         "address": "100 Finch Avenue"
       }
+    }
+  ],
+  "departments": [
+    {
+      "id": "5512c26f-f1bf-4519-92ec-a74f0ee42188",
+      "name": "science",
+      "director": "mario ding"
+    },
+    {
+      "id": "f5c9fb31-bc25-4cf8-93a3-8da74194c05a",
+      "name": "medicine",
+      "director": "mary zhu"
+    },
+    {
+      "id": "ead5a4a6-4575-43ce-999b-7d928e3975c4",
+      "name": "computer science",
+      "director": "victor ding"
+    },
+    {
+      "id": "99672828-360c-4cd3-85b2-495e8b0267f3",
+      "name": "Math",
+      "director": "Victor Ding"
+    },
+    {
+      "id": "567f6301-bec5-4278-9295-d61a69e09881",
+      "name": "SQA-Shanghai",
+      "director": "Victor Ding"
+    },
+    {
+      "id": "c99e0b4f-ee62-41a8-a43e-d215b34c9910",
+      "name": "milpitas",
+      "director": "Aria E"
+    },
+    {
+      "id": "0388ae1e-c02e-4b8e-b024-bbd445f6409b",
+      "name": "Shanghi",
+      "director": "Zhong Chen"
+    },
+    {
+      "id": "e719ff23-9553-4656-adad-acf8e1f3671c",
+      "name": "India",
+      "director": "Araveen"
+    },
+    {
+      "id": "c2e55555-b162-4d3e-a511-d17ad514c394",
+      "name": "Tanpa",
+      "director": "Praveen"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class SearchForm extends Component {
+export default class SearchStudentForm extends Component {
   render() {
     return <div>Hello from SearchForm Component</div>;
   }

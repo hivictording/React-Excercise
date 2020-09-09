@@ -1,0 +1,13 @@
+#departments {
+  display: flex;
+  min-height: 92vh;
+
+  .departments-left {
+    flex: 2;
+    background: $gray-5;
+  }
+  .departments-right {
+    flex: 5;
+    background: $gray-4;
+  }
+}
