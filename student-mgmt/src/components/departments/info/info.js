@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { DataConsumer } from "../../../context";
 
+import SingleInfo from "./singleInfo";
+
 export default class DepartmentInfo extends Component {
   render() {
     return (
@@ -12,7 +14,7 @@ export default class DepartmentInfo extends Component {
           if (loading) return <h1>Loading Data.....</h1>;
           if (!loading)
             return (
-              <table className="table">
+              <table id="departments-info" className="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -23,12 +25,7 @@ export default class DepartmentInfo extends Component {
                 </thead>
                 <tbody>
                   {filteredDepartments.map((item, index) => (
-                    <tr key={item.id}>
-                      <th scope="row">{index + 1}</th>
-                      <td>{item.name}</td>
-                      <td>{item.director}</td>
-                      <td>Edit Delete</td>
-                    </tr>
+                    <SingleInfo key={item.id} {...item} index={index} />
                   ))}
                 </tbody>
               </table>

@@ -1,0 +1,19 @@
+#departments-info {
+  font-size: 0.8em;
+
+  tr.allow-edit {
+    input {
+      border: 1px solid black;
+      background: $gray-5;
+    }
+  }
+  input {
+    border: none;
+    background: transparent;
+    color: black;
+  }
+
+  button {
+    font-size: 0.7em;
+  }
+}

@@ -14,7 +14,7 @@ export default class SearchDepartmentForm extends Component {
   static contextType = Context;
 
   handleChange = (event) => {
-    let searchDepartment = this.context.searchDepartment;
+    let { searchDepartment } = this.context;
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -27,7 +27,7 @@ export default class SearchDepartmentForm extends Component {
       <form id="search-department-form" className="text-center">
         <div className="form-title">Search Department</div>
         <div className="form-group">
-          <label htmlFor="search-director">Director</label>
+          {/* <label htmlFor="search-director">Director</label> */}
           <input
             type="text"
             id="search-director"

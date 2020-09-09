@@ -38,49 +38,14 @@
   ],
   "departments": [
     {
-      "id": "5512c26f-f1bf-4519-92ec-a74f0ee42188",
-      "name": "science",
-      "director": "mario ding"
+      "name": "Chelsea",
+      "director": "Lanpard",
+      "id": "723be699-94d3-4cfb-a469-bffc18033a69"
     },
     {
-      "id": "f5c9fb31-bc25-4cf8-93a3-8da74194c05a",
-      "name": "medicine",
-      "director": "mary zhu"
-    },
-    {
-      "id": "ead5a4a6-4575-43ce-999b-7d928e3975c4",
-      "name": "computer science",
-      "director": "victor ding"
-    },
-    {
-      "id": "99672828-360c-4cd3-85b2-495e8b0267f3",
-      "name": "Math",
-      "director": "Victor Ding"
-    },
-    {
-      "id": "567f6301-bec5-4278-9295-d61a69e09881",
-      "name": "SQA-Shanghai",
-      "director": "Victor Ding"
-    },
-    {
-      "id": "c99e0b4f-ee62-41a8-a43e-d215b34c9910",
-      "name": "milpitas",
-      "director": "Aria E"
-    },
-    {
-      "id": "0388ae1e-c02e-4b8e-b024-bbd445f6409b",
-      "name": "Shanghi",
-      "director": "Zhong Chen"
-    },
-    {
-      "id": "e719ff23-9553-4656-adad-acf8e1f3671c",
-      "name": "India",
-      "director": "Araveen"
-    },
-    {
-      "id": "c2e55555-b162-4d3e-a511-d17ad514c394",
-      "name": "Tanpa",
-      "director": "Praveen"
+      "name": "Liverpool",
+      "director": "Klop",
+      "id": "b81cccca-03b3-48fb-ae93-fe1f451b5367"
     }
   ]
 }

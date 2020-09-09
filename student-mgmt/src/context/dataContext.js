@@ -28,6 +28,20 @@ export default class DataProvider extends Component {
     let data = await fetchData(`${URL}/departments`);
     this.setState({
       departments: { loading: false, data },
+      filteredDepartments: data,
+    });
+  };
+
+  editDepartment = async (id, name, director) => {
+    await axios.put(`${URL}/departments/${id}`, {
+      name: name,
+      director: director,
+    });
+
+    let data = await fetchData(`${URL}/departments`);
+    this.setState({
+      departments: { loading: false, data },
+      filteredDepartments: data,
     });
   };
 
@@ -61,6 +75,8 @@ export default class DataProvider extends Component {
         value={{
           ...this.state,
           addDepartment: this.addDepartment,
+          editDepartment: (id, name, department) =>
+            this.editDepartment(id, name, department),
           searchDepartment: (str) => this.searchDepartment(str),
         }}
       >
