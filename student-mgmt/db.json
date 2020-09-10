@@ -38,14 +38,19 @@
   ],
   "departments": [
     {
-      "name": "Chelsea",
-      "director": "Lanpard",
-      "id": "723be699-94d3-4cfb-a469-bffc18033a69"
+      "id": "b335d84b-d657-4e49-8084-fed525223193",
+      "name": "Real Madrid",
+      "director": "Zidane"
     },
     {
-      "name": "Liverpool",
-      "director": "Klop",
-      "id": "b81cccca-03b3-48fb-ae93-fe1f451b5367"
+      "name": "Lyon",
+      "director": "Ludy",
+      "id": "c7304f94-13aa-47f4-8e91-7a1a0aebf15c"
+    },
+    {
+      "id": "938ac7b6-15eb-44cd-a00f-a72ee116b2f1",
+      "name": "Paris",
+      "director": "Tuhel"
     }
   ]
 }

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
 
-import "./addDepartmentForm.scss";
-
 import { Context } from "../../../context";
 
 export default class AddDepartmentForm extends Component {

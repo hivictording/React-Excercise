@@ -29,7 +29,7 @@ export default class SingleInfo extends Component {
     return (
       <DataConsumer>
         {(value) => {
-          const { editDepartment } = value;
+          const { editDepartment, deleteDepartment } = value;
           return (
             <tr key={id} className={edit ? "allow-edit" : ""}>
               <th scope="row">{index + 1}</th>
@@ -39,6 +39,7 @@ export default class SingleInfo extends Component {
                   name={`name`}
                   value={name}
                   onChange={this.handleChange}
+                  ref={(element) => (this.nameRef = element)}
                   disabled={edit ? false : true}
                 />
               </td>
@@ -54,15 +55,22 @@ export default class SingleInfo extends Component {
               <td>
                 {edit || (
                   <button
-                    className="btn btn-success mr-2"
+                    className="btn btn-secondary mr-2"
                     onClick={() => {
-                      this.setState({ edit: true });
+                      this.setState({ edit: true }, () => this.nameRef.focus());
                     }}
                   >
                     Edit
                   </button>
                 )}
-                {edit || <button className="btn btn-success">Delete</button>}
+                {edit || (
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => deleteDepartment(id)}
+                  >
+                    Delete
+                  </button>
+                )}
                 {edit && (
                   <button
                     className="btn btn-info mr-2"

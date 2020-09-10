@@ -1,5 +1,9 @@
 @import "./scss/variables.scss";
 @import "./scss/globals.scss";
+
 @import "./components/header/header.scss";
 @import "./pages/departments.scss";
+@import "./components/departments/add-form/addDepartmentForm.scss";
 @import "./components/departments/info/info.scss";
+@import "./pages//students.scss";
+@import "./components/students/add-form/addForm.scss";

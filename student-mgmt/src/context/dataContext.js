@@ -16,6 +16,14 @@ export default class DataProvider extends Component {
     };
   }
 
+  setDepartments = async () => {
+    let data = await fetchData(`${URL}/departments`);
+    this.setState({
+      departments: { loading: false, data },
+      filteredDepartments: data,
+    });
+  };
+
   addDepartment = async (id, name, director) => {
     await axios.post(`${URL}/departments`, { id, name, director });
     // this.setState({
@@ -25,11 +33,7 @@ export default class DataProvider extends Component {
     //   },
     // });
 
-    let data = await fetchData(`${URL}/departments`);
-    this.setState({
-      departments: { loading: false, data },
-      filteredDepartments: data,
-    });
+    await this.setDepartments();
   };
 
   editDepartment = async (id, name, director) => {
@@ -38,11 +42,13 @@ export default class DataProvider extends Component {
       director: director,
     });
 
-    let data = await fetchData(`${URL}/departments`);
-    this.setState({
-      departments: { loading: false, data },
-      filteredDepartments: data,
-    });
+    await this.setDepartments();
+  };
+
+  deleteDepartment = async (id) => {
+    await axios.delete(`${URL}/departments/${id}`);
+
+    await this.setDepartments();
   };
 
   searchDepartment = (str) => {
@@ -77,6 +83,7 @@ export default class DataProvider extends Component {
           addDepartment: this.addDepartment,
           editDepartment: (id, name, department) =>
             this.editDepartment(id, name, department),
+          deleteDepartment: (id) => this.deleteDepartment(id),
           searchDepartment: (str) => this.searchDepartment(str),
         }}
       >

@@ -1,0 +1,13 @@
+#students {
+  display: flex;
+  min-height: 92vh;
+
+  .students-left {
+    flex: 4;
+    background: $gray-5;
+  }
+  .students-right {
+    flex: 7;
+    background: $gray-4;
+  }
+}
