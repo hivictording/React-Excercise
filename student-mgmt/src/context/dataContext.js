@@ -12,7 +12,8 @@ export default class DataProvider extends Component {
     this.state = {
       departments: { loading: true, data: [] },
       filteredDepartments: [],
-      students: [],
+      students: { loading: true, data: [] },
+      filteredStudents: [],
     };
   }
 
@@ -21,6 +22,14 @@ export default class DataProvider extends Component {
     this.setState({
       departments: { loading: false, data },
       filteredDepartments: data,
+    });
+  };
+
+  setStudents = async () => {
+    let data = await fetchData(`${URL}/students`);
+    this.setState({
+      students: { loading: false, data },
+      filteredStudents: data,
     });
   };
 
@@ -34,6 +43,30 @@ export default class DataProvider extends Component {
     // });
 
     await this.setDepartments();
+  };
+
+  addStudent = async (
+    id,
+    username,
+    fullname,
+    gender,
+    age,
+    country,
+    hobbies,
+    department
+  ) => {
+    await axios.post(`${URL}/students`, {
+      id,
+      username,
+      fullname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department,
+    });
+
+    await this.setStudents();
   };
 
   editDepartment = async (id, name, director) => {
@@ -85,6 +118,7 @@ export default class DataProvider extends Component {
             this.editDepartment(id, name, department),
           deleteDepartment: (id) => this.deleteDepartment(id),
           searchDepartment: (str) => this.searchDepartment(str),
+          addStudent: this.addStudent,
         }}
       >
         {this.props.children}

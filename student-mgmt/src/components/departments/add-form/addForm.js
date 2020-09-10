@@ -88,7 +88,11 @@ export default class AddDepartmentForm extends Component {
             placeholder="Enter director name"
           />
         </div>
-        <input className="form-control" type="submit" value="Add" />
+        <input
+          className="form-control btn btn-info"
+          type="submit"
+          value="Add"
+        />
       </form>
     );
   }

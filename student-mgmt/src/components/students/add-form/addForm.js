@@ -1,14 +1,92 @@
 import React, { Component } from "react";
+import { v4 as uuid } from "uuid";
 
 import { Context } from "../../../context";
 
 export default class AddStudentForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: uuid(),
+      username: "",
+      firstname: "",
+      lastname: "",
+      gender: "",
+      age: "",
+      country: "",
+      hobbies: [],
+      department: "",
+    };
+  }
+
   static contextType = Context;
+
+  handleChange = (event) => {
+    const target = event.target;
+    if (target.type === "checkbox") {
+      if (this.state[target.name].includes(target.value)) {
+        this.setState({
+          [target.name]: this.state[target.name].filter(
+            (item) => item != target.value
+          ),
+        });
+      } else {
+        this.setState({
+          [target.name]: [...this.state[target.name], target.value],
+        });
+      }
+    } else {
+      this.setState({
+        [target.name]: target.value,
+      });
+    }
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { addStudent } = this.context;
+    const {
+      id,
+      username,
+      firstname,
+      lastname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department,
+    } = this.state;
+    const fullname = `${firstname} ${lastname}`;
+    addStudent(
+      id,
+      username,
+      fullname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department
+    );
+
+    this.setState({
+      id: uuid(),
+      username: "",
+      firstname: "",
+      lastname: "",
+      gender: "",
+      age: "",
+      country: "",
+      hobbies: [],
+      department: "",
+    });
+  };
 
   render() {
     const {
       departments: { data },
     } = this.context;
+    const { username, firstname, lastname, age, country } = this.state;
     return (
       <form id="add-student-form" className="text-center">
         <div className="form-title">Add Student</div>
@@ -20,6 +98,8 @@ export default class AddStudentForm extends Component {
             type="text"
             id="username"
             name="username"
+            value={username}
+            onChange={this.handleChange}
           />
         </div>
 
@@ -32,6 +112,8 @@ export default class AddStudentForm extends Component {
               type="text"
               id="firstname"
               name="firstname"
+              value={firstname}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -41,6 +123,8 @@ export default class AddStudentForm extends Component {
               type="text"
               id="lastname"
               name="lastname"
+              value={lastname}
+              onChange={this.handleChange}
             />
           </div>
         </div>
@@ -57,6 +141,7 @@ export default class AddStudentForm extends Component {
               id="male"
               className="form-check-input"
               value="male"
+              onChange={this.handleChange}
             />
             <label className="form-check-label text-capitalize" htmlFor="male">
               male
@@ -69,6 +154,7 @@ export default class AddStudentForm extends Component {
               id="female"
               className="form-check-input"
               value="female"
+              onChange={this.handleChange}
             />
             <label
               className="form-check-label text-capitalize"
@@ -88,6 +174,8 @@ export default class AddStudentForm extends Component {
               type="text"
               id="age"
               name="age"
+              value={age}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
@@ -97,6 +185,8 @@ export default class AddStudentForm extends Component {
               type="text"
               id="country"
               name="country"
+              value={country}
+              onChange={this.handleChange}
             />
           </div>
         </div>
@@ -111,6 +201,7 @@ export default class AddStudentForm extends Component {
               id="travel"
               className="form-check-input"
               value="travel"
+              onChange={this.handleChange}
             />
             <label
               className="form-check-label text-capitalize"
@@ -126,6 +217,7 @@ export default class AddStudentForm extends Component {
               id="reading"
               className="form-check-input"
               value="reading"
+              onChange={this.handleChange}
             />
             <label
               className="form-check-label text-capitalize"
@@ -141,6 +233,7 @@ export default class AddStudentForm extends Component {
               id="fishing"
               className="form-check-input"
               value="fishing"
+              onChange={this.handleChange}
             />
             <label
               className="form-check-label text-capitalize"
@@ -158,7 +251,10 @@ export default class AddStudentForm extends Component {
             name="department"
             id="department"
             className="custom-select custom-select-sm"
+            defaultValue=""
+            onChange={this.handleChange}
           >
+            <option value="">Select a department</option>
             {data &&
               data.map((item) => (
                 <option key={item.id} value={item.name}>
@@ -167,6 +263,13 @@ export default class AddStudentForm extends Component {
               ))}
           </select>
         </div>
+
+        <button
+          className="btn btn-info btn-sm text-capitalize"
+          onClick={this.handleSubmit}
+        >
+          add student
+        </button>
       </form>
     );
   }

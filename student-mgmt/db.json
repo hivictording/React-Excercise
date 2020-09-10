@@ -1,39 +1,17 @@
 {
   "students": [
     {
-      "id": 1,
-      "username": "hivictor",
-      "name": "Victor Ding",
-      "gender": "Male",
-      "age": 45,
-      "country": "Canada",
-      "habit": [
-        "sports",
-        "reading",
-        "travel"
-      ],
-      "others": {
-        "grade": 1,
-        "department": "computer science",
-        "address": "80 copper creek drive"
-      }
-    },
-    {
-      "id": 2,
+      "id": "c778e0ac-1efa-4d7d-a02c-5983551d4518",
       "username": "himary",
-      "name": "Mary Zhu",
-      "gender": "Female",
-      "age": 38,
-      "country": "USA",
-      "habit": [
+      "fullname": "Ruhui Zhu",
+      "gender": "female",
+      "age": "38",
+      "country": "Canada",
+      "hobbies": [
         "reading",
         "travel"
       ],
-      "others": {
-        "grade": 2,
-        "department": "biology",
-        "address": "100 Finch Avenue"
-      }
+      "department": "Inter Milan"
     }
   ],
   "departments": [
@@ -51,6 +29,36 @@
       "id": "938ac7b6-15eb-44cd-a00f-a72ee116b2f1",
       "name": "Paris",
       "director": "Tuhel"
+    },
+    {
+      "id": "b86d4488-3116-499c-a815-44b9baa1305d",
+      "name": "Inter Milan",
+      "director": "Conte"
+    },
+    {
+      "id": "ee1a947e-a998-4c49-af79-c57e756f1fbc",
+      "name": "Man City",
+      "director": "Guadiola"
+    },
+    {
+      "id": "196b31b2-618d-4166-ad58-bb93514cb4c7",
+      "name": "Chelsea",
+      "director": "Lampard"
+    },
+    {
+      "id": "349ce197-8161-4401-af89-4d3121c9d95d",
+      "name": "Liverpool",
+      "director": "Klopp"
+    },
+    {
+      "id": "4d909de4-7efb-4798-950b-ad8420f0dd51",
+      "name": "Tottham Hotspur",
+      "director": "Mouriho"
+    },
+    {
+      "id": "f87e6e36-6afc-4dfc-91e5-1b58456d13cd",
+      "name": "Daddy",
+      "director": "Victor Ding"
     }
   ]
 }

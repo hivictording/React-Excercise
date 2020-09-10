@@ -5,5 +5,8 @@ export default async (url) => {
     let result = await axios.get(url);
     let data = result.data;
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.log("data error");
+    return null;
+  }
 };

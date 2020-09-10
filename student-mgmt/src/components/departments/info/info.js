@@ -24,9 +24,10 @@ export default class DepartmentInfo extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredDepartments.map((item, index) => (
-                    <SingleInfo key={item.id} {...item} index={index} />
-                  ))}
+                  {filteredDepartments &&
+                    filteredDepartments.map((item, index) => (
+                      <SingleInfo key={item.id} {...item} index={index} />
+                    ))}
                 </tbody>
               </table>
             );
