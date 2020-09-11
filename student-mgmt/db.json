@@ -12,6 +12,96 @@
         "travel"
       ],
       "department": "Inter Milan"
+    },
+    {
+      "id": "78307c2e-f8d9-4f6a-873d-0219576f0697",
+      "username": "hivictor",
+      "fullname": "Jianbo DING",
+      "gender": "male",
+      "age": "45",
+      "country": "Canada",
+      "hobbies": [
+        "travel",
+        "reading",
+        "fishing"
+      ],
+      "department": "Man Utd"
+    },
+    {
+      "id": "ec2c0d74-a2cf-478d-9da5-ddfb05b53859",
+      "username": "root",
+      "fullname": "Ruhui Zhu",
+      "gender": "female",
+      "age": "10",
+      "country": "Canada",
+      "hobbies": [
+        "travel",
+        "fishing"
+      ],
+      "department": "Man City"
+    },
+    {
+      "id": "71496d45-f4ca-44d1-b154-3e0b8788f256",
+      "username": "ruhuizhu@outlook.com",
+      "fullname": "Ruhui Zhu",
+      "gender": "",
+      "age": "22",
+      "country": "USA",
+      "hobbies": [
+        "travel",
+        "fishing"
+      ],
+      "department": "Liverpool FC"
+    },
+    {
+      "id": "cc0ac166-0601-4b97-babf-fe930247f44e",
+      "username": "jianboding@outlook.com",
+      "fullname": "Jianbo DING",
+      "gender": "male",
+      "age": "25",
+      "country": "Canada",
+      "hobbies": [
+        "travel",
+        "fishing"
+      ],
+      "department": "Man United"
+    },
+    {
+      "id": "c0b93320-6647-4c99-867e-dbae62e436c5",
+      "username": "hivictor",
+      "fullname": "Jianbo DING",
+      "gender": "male",
+      "age": "42",
+      "country": "Canada",
+      "hobbies": [
+        "fishing",
+        "reading"
+      ],
+      "department": "Paris"
+    },
+    {
+      "id": "a0f79f25-096e-4f95-8476-96172bf2b604",
+      "username": "root",
+      "fullname": "Ruhui Zhu",
+      "gender": "female",
+      "age": "10",
+      "country": "Canada",
+      "hobbies": [
+        "fishing"
+      ],
+      "department": "Man City"
+    },
+    {
+      "id": "744eddc5-3d45-41dc-bd8a-8807f171d13e",
+      "username": "vding",
+      "fullname": "Ruhui Zhu",
+      "gender": "female",
+      "age": "21",
+      "country": "Canada",
+      "hobbies": [
+        "travel"
+      ],
+      "department": "Real Madrid"
     }
   ],
   "departments": [
@@ -21,19 +111,14 @@
       "director": "Zidane"
     },
     {
-      "name": "Lyon",
-      "director": "Ludy",
+      "name": "Man United",
+      "director": "Soerskuer",
       "id": "c7304f94-13aa-47f4-8e91-7a1a0aebf15c"
     },
     {
-      "id": "938ac7b6-15eb-44cd-a00f-a72ee116b2f1",
       "name": "Paris",
-      "director": "Tuhel"
-    },
-    {
-      "id": "b86d4488-3116-499c-a815-44b9baa1305d",
-      "name": "Inter Milan",
-      "director": "Conte"
+      "director": "Tuhell",
+      "id": "938ac7b6-15eb-44cd-a00f-a72ee116b2f1"
     },
     {
       "id": "ee1a947e-a998-4c49-af79-c57e756f1fbc",
@@ -41,24 +126,9 @@
       "director": "Guadiola"
     },
     {
-      "id": "196b31b2-618d-4166-ad58-bb93514cb4c7",
-      "name": "Chelsea",
-      "director": "Lampard"
-    },
-    {
-      "id": "349ce197-8161-4401-af89-4d3121c9d95d",
-      "name": "Liverpool",
-      "director": "Klopp"
-    },
-    {
-      "id": "4d909de4-7efb-4798-950b-ad8420f0dd51",
-      "name": "Tottham Hotspur",
-      "director": "Mouriho"
-    },
-    {
-      "id": "f87e6e36-6afc-4dfc-91e5-1b58456d13cd",
-      "name": "Daddy",
-      "director": "Victor Ding"
+      "name": "Liverpool FC",
+      "director": "Klopp",
+      "id": "349ce197-8161-4401-af89-4d3121c9d95d"
     }
   ]
 }

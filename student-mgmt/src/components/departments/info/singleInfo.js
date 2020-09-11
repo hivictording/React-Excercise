@@ -55,7 +55,7 @@ export default class SingleInfo extends Component {
               <td>
                 {edit || (
                   <button
-                    className="btn btn-secondary mr-2"
+                    className="btn btn-info mr-2"
                     onClick={() => {
                       this.setState({ edit: true }, () => this.nameRef.focus());
                     }}
@@ -65,7 +65,7 @@ export default class SingleInfo extends Component {
                 )}
                 {edit || (
                   <button
-                    className="btn btn-secondary"
+                    className="btn btn-info"
                     onClick={() => deleteDepartment(id)}
                   >
                     Delete

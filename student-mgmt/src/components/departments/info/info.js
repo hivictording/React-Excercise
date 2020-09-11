@@ -14,7 +14,7 @@ export default class DepartmentInfo extends Component {
           if (loading) return <h1>Loading Data.....</h1>;
           if (!loading)
             return (
-              <table id="departments-info" className="table">
+              <table id="departments-info" className="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

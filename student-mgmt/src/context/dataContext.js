@@ -101,24 +101,33 @@ export default class DataProvider extends Component {
   };
 
   async componentDidMount() {
-    let data = await fetchData(`${URL}/departments`);
+    let dataDepartments = await fetchData(`${URL}/departments`);
+    let dataStudents = await fetchData(`${URL}/students`);
     this.setState({
-      departments: { loading: false, data },
-      filteredDepartments: data,
+      departments: { loading: false, data: dataDepartments },
+      filteredDepartments: dataDepartments,
+      students: { loading: false, data: dataStudents },
+      filteredStudents: dataStudents,
     });
   }
 
   render() {
+    const {
+      addDepartment,
+      editDepartment,
+      deleteDepartment,
+      searchDepartment,
+      addStudent,
+    } = this;
     return (
       <Context.Provider
         value={{
           ...this.state,
-          addDepartment: this.addDepartment,
-          editDepartment: (id, name, department) =>
-            this.editDepartment(id, name, department),
-          deleteDepartment: (id) => this.deleteDepartment(id),
-          searchDepartment: (str) => this.searchDepartment(str),
-          addStudent: this.addStudent,
+          addDepartment,
+          editDepartment,
+          deleteDepartment,
+          searchDepartment,
+          addStudent,
         }}
       >
         {this.props.children}
