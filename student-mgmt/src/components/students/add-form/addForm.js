@@ -31,7 +31,7 @@ export default class AddStudentForm extends Component {
       if (this.state[target.name].includes(target.value)) {
         this.setState({
           [target.name]: this.state[target.name].filter(
-            (item) => item != target.value
+            (item) => item !== target.value
           ),
         });
       } else {

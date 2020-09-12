@@ -4,10 +4,6 @@ import { Context } from "../../../context";
 import SingleInfo from "../../students/info/single-info";
 
 export default class StudentInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   static contextType = Context;
 
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import { DataConsumer } from "../../../context";
 
@@ -54,22 +55,24 @@ export default class SingleInfo extends Component {
               </td>
               <td>
                 {edit || (
-                  <button
-                    className="btn btn-info mr-2"
+                  <a
+                    className="operation-icon text-secondary mr-3"
+                    href="#"
                     onClick={() => {
                       this.setState({ edit: true }, () => this.nameRef.focus());
                     }}
                   >
-                    Edit
-                  </button>
+                    <FaEdit />
+                  </a>
                 )}
                 {edit || (
-                  <button
-                    className="btn btn-info"
+                  <a
+                    className="operation-icon text-secondary"
+                    href="#"
                     onClick={() => deleteDepartment(id)}
                   >
-                    Delete
-                  </button>
+                    <FaTrashAlt />
+                  </a>
                 )}
                 {edit && (
                   <button

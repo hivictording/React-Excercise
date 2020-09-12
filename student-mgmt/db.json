@@ -129,6 +129,11 @@
       "name": "Liverpool FC",
       "director": "Klopp",
       "id": "349ce197-8161-4401-af89-4d3121c9d95d"
+    },
+    {
+      "id": "13a98d04-672e-47f8-b5be-28345fa96e5c",
+      "name": "Chelsea",
+      "director": "Lampard"
     }
   ]
 }
