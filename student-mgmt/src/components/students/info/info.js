@@ -13,17 +13,17 @@ export default class StudentInfo extends Component {
     } = this.context;
 
     return (
-      <>
+      <div className="student-info">
         {loading && <h1>Loading Data.....</h1>}
         {loading || (
           <table className="table table-striped">
             <thead>
-              <tr>
-                <td>ID</td>
-                <td>Username</td>
-                <td>Fullname</td>
-                <td>Gender</td>
-                <td>Department</td>
+              <tr className="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Department</th>
+                <th scope="col">Operations</th>
               </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@ export default class StudentInfo extends Component {
             </tbody>
           </table>
         )}
-      </>
+      </div>
     );
   }
 }

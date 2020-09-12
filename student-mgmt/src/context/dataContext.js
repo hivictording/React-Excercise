@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 import URL from "../components/globals";
 import fetchData from "../utils/fetchData";
@@ -14,6 +15,17 @@ export default class DataProvider extends Component {
       filteredDepartments: [],
       students: { loading: true, data: [] },
       filteredStudents: [],
+      currentStu: {
+        id: uuid(),
+        username: "",
+        firstname: "",
+        lastname: "",
+        gender: "",
+        age: "",
+        country: "",
+        hobbies: [],
+        department: "",
+      },
     };
   }
 
@@ -43,30 +55,6 @@ export default class DataProvider extends Component {
     // });
 
     await this.setDepartments();
-  };
-
-  addStudent = async (
-    id,
-    username,
-    fullname,
-    gender,
-    age,
-    country,
-    hobbies,
-    department
-  ) => {
-    await axios.post(`${URL}/students`, {
-      id,
-      username,
-      fullname,
-      gender,
-      age,
-      country,
-      hobbies,
-      department,
-    });
-
-    await this.setStudents();
   };
 
   editDepartment = async (id, name, director) => {
@@ -100,6 +88,72 @@ export default class DataProvider extends Component {
     }
   };
 
+  addStudent = async (
+    id,
+    username,
+    fullname,
+    gender,
+    age,
+    country,
+    hobbies,
+    department
+  ) => {
+    await axios.post(`${URL}/students`, {
+      id,
+      username,
+      fullname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department,
+    });
+
+    await this.setStudents();
+  };
+
+  editStudent = () => {};
+  deleteStudent = () => {};
+  searchStudent = () => {};
+
+  setCurrentStu = async (id) => {
+    let currentStu = await fetchData(`${URL}/students/${id}`);
+
+    this.setState({
+      currentStu: currentStu,
+    });
+  };
+
+  handleStuFormChange = (event) => {
+    const target = event.target;
+    if (target.type === "checkbox") {
+      if (this.state.currentStu[target.name].includes(target.value)) {
+        this.setState({
+          currentStu: {
+            ...this.state.currentStu,
+            [target.name]: this.state[target.name].filter(
+              (item) => item !== target.value
+            ),
+          },
+        });
+      } else {
+        this.setState({
+          currentStu: {
+            ...this.state.currentStu,
+            [target.name]: [
+              ...this.state.currentStu[target.name],
+              target.value,
+            ],
+          },
+        });
+      }
+    } else {
+      this.setState({
+        currentStu: { ...this.state.currentStu, [target.name]: target.value },
+      });
+    }
+  };
+
   async componentDidMount() {
     let dataDepartments = await fetchData(`${URL}/departments`);
     let dataStudents = await fetchData(`${URL}/students`);
@@ -118,6 +172,8 @@ export default class DataProvider extends Component {
       deleteDepartment,
       searchDepartment,
       addStudent,
+      setCurrentStu,
+      handleStuFormChange,
     } = this;
     return (
       <Context.Provider
@@ -128,6 +184,8 @@ export default class DataProvider extends Component {
           deleteDepartment,
           searchDepartment,
           addStudent,
+          setCurrentStu,
+          handleStuFormChange,
         }}
       >
         {this.props.children}

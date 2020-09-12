@@ -134,6 +134,11 @@
       "id": "13a98d04-672e-47f8-b5be-28345fa96e5c",
       "name": "Chelsea",
       "director": "Lampard"
+    },
+    {
+      "id": "aaf2d096-c29a-47cf-b7b4-57463b273faa",
+      "name": "Leeds Utd",
+      "director": "Balsa"
     }
   ]
 }

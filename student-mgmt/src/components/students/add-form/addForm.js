@@ -8,15 +8,15 @@ export default class AddStudentForm extends Component {
     super(props);
 
     this.state = {
-      id: uuid(),
-      username: "",
-      firstname: "",
-      lastname: "",
-      gender: "",
-      age: "",
-      country: "",
-      hobbies: [],
-      department: "",
+      // id: uuid(),
+      // username: "",
+      // firstname: "",
+      // lastname: "",
+      // gender: "",
+      // age: "",
+      // country: "",
+      // hobbies: [],
+      // department: "",
       refs: [],
     };
 
@@ -60,18 +60,21 @@ export default class AddStudentForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { addStudent } = this.context;
+    // const { addStudent } = this.context;
     const {
-      id,
-      username,
-      firstname,
-      lastname,
-      gender,
-      age,
-      country,
-      hobbies,
-      department,
-    } = this.state;
+      addStudent,
+      currentStu: {
+        id,
+        username,
+        firstname,
+        lastname,
+        gender,
+        age,
+        country,
+        hobbies,
+        department,
+      },
+    } = this.context;
     const fullname = `${firstname} ${lastname}`;
     addStudent(
       id,
@@ -113,8 +116,11 @@ export default class AddStudentForm extends Component {
   render() {
     const {
       departments: { data },
+      currentStu: { username, firstname, lastname, age, country },
+      handleStuFormChange,
     } = this.context;
-    const { username, firstname, lastname, age, country } = this.state;
+    // console.log(currentStu);
+    // const { username, firstname, lastname, age, country } = this.state;
     return (
       <form id="add-student-form" className="text-center">
         <div className="form-title">Add Student</div>
@@ -127,7 +133,7 @@ export default class AddStudentForm extends Component {
             id="username"
             name="username"
             value={username}
-            onChange={this.handleChange}
+            onChange={handleStuFormChange}
             ref={this.handleRef}
           />
         </div>
@@ -142,7 +148,7 @@ export default class AddStudentForm extends Component {
               id="firstname"
               name="firstname"
               value={firstname}
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
           </div>
@@ -154,7 +160,7 @@ export default class AddStudentForm extends Component {
               id="lastname"
               name="lastname"
               value={lastname}
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
           </div>
@@ -172,7 +178,7 @@ export default class AddStudentForm extends Component {
               id="male"
               className="form-check-input"
               value="male"
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
             <label className="form-check-label text-capitalize" htmlFor="male">
@@ -186,7 +192,7 @@ export default class AddStudentForm extends Component {
               id="female"
               className="form-check-input"
               value="female"
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
             <label
@@ -208,7 +214,7 @@ export default class AddStudentForm extends Component {
               id="age"
               name="age"
               value={age}
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
           </div>
@@ -220,7 +226,7 @@ export default class AddStudentForm extends Component {
               id="country"
               name="country"
               value={country}
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
           </div>
@@ -236,7 +242,7 @@ export default class AddStudentForm extends Component {
               id="travel"
               className="form-check-input"
               value="travel"
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
             <label
@@ -253,7 +259,7 @@ export default class AddStudentForm extends Component {
               id="reading"
               className="form-check-input"
               value="reading"
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
             <label
@@ -270,7 +276,7 @@ export default class AddStudentForm extends Component {
               id="fishing"
               className="form-check-input"
               value="fishing"
-              onChange={this.handleChange}
+              onChange={handleStuFormChange}
               ref={this.handleRef}
             />
             <label
@@ -290,7 +296,7 @@ export default class AddStudentForm extends Component {
             id="department"
             className="custom-select custom-select-sm"
             defaultValue=""
-            onChange={this.handleChange}
+            onChange={handleStuFormChange}
             ref={this.handleRef}
           >
             <option value="">Select a department</option>
