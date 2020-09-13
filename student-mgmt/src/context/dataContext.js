@@ -26,7 +26,10 @@ export default class DataProvider extends Component {
         hobbies: [],
         department: "",
       },
+      editingStu: false,
     };
+
+    this.stuFormRefs = [];
   }
 
   setDepartments = async () => {
@@ -88,16 +91,22 @@ export default class DataProvider extends Component {
     }
   };
 
-  addStudent = async (
-    id,
-    username,
-    fullname,
-    gender,
-    age,
-    country,
-    hobbies,
-    department
-  ) => {
+  addStudent = async (event) => {
+    event.preventDefault();
+    // add student into database;
+    const {
+      id,
+      username,
+      firstname,
+      lastname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department,
+    } = this.state.currentStu;
+
+    const fullname = `${firstname} ${lastname}`;
     await axios.post(`${URL}/students`, {
       id,
       username,
@@ -109,7 +118,34 @@ export default class DataProvider extends Component {
       department,
     });
 
+    // set student related state
     await this.setStudents();
+
+    this.setState({
+      currentStu: {
+        id: uuid(),
+        username: "",
+        firstname: "",
+        lastname: "",
+        gender: "",
+        age: "",
+        country: "",
+        hobbies: [],
+        department: "",
+      },
+    });
+
+    // Reset form
+    for (const values of Object.values(this.stuFormRefs)) {
+      values.forEach((value) => {
+        if (value.type === "radio" || value.type === "checkbox") {
+          value.element.checked = false;
+        } else if (value.type === "select-one") {
+          value.element.children[0].selected = true;
+        }
+      });
+    }
+    this.stuFormRefs["username"][0].element.focus();
   };
 
   editStudent = () => {};
@@ -118,20 +154,66 @@ export default class DataProvider extends Component {
 
   setCurrentStu = async (id) => {
     let currentStu = await fetchData(`${URL}/students/${id}`);
+    // console.log(currentStu);
+    const {
+      username,
+      fullname,
+      gender,
+      age,
+      country,
+      hobbies,
+      department,
+    } = currentStu;
 
-    this.setState({
-      currentStu: currentStu,
-    });
+    const firstname = fullname.split(" ")[0];
+    const lastname = fullname.split(" ")[1];
+
+    this.setState(
+      {
+        currentStu: {
+          username,
+          firstname,
+          lastname,
+          gender,
+          age,
+          country,
+          hobbies,
+          department,
+        },
+        editingStu: true,
+      },
+      () => {
+        this.stuFormRefs.forEach((refs) => {
+          if (refs.elementsType === "radio" && refs.elementsName === "gender") {
+            refs.elements.forEach((ref) => {
+              if (ref.value === gender) {
+                ref.checked = true;
+              }
+            });
+          } else if (
+            refs.elementsType === "checkbox" &&
+            refs.elementsName === "hobbies"
+          ) {
+            refs.elements.forEach((ref) => {
+              ref.checked = hobbies.includes(ref.value) ? true : false;
+            });
+          } else if (refs.elementsType === "select-one") {
+            refs.elements[0].value = department;
+          }
+        });
+      }
+    );
   };
 
   handleStuFormChange = (event) => {
     const target = event.target;
+    const { currentStu } = this.state;
     if (target.type === "checkbox") {
-      if (this.state.currentStu[target.name].includes(target.value)) {
+      if (currentStu[target.name].includes(target.value)) {
         this.setState({
           currentStu: {
-            ...this.state.currentStu,
-            [target.name]: this.state[target.name].filter(
+            ...currentStu,
+            [target.name]: currentStu[target.name].filter(
               (item) => item !== target.value
             ),
           },
@@ -139,17 +221,45 @@ export default class DataProvider extends Component {
       } else {
         this.setState({
           currentStu: {
-            ...this.state.currentStu,
-            [target.name]: [
-              ...this.state.currentStu[target.name],
-              target.value,
-            ],
+            ...currentStu,
+            [target.name]: [...currentStu[target.name], target.value],
           },
         });
       }
     } else {
       this.setState({
-        currentStu: { ...this.state.currentStu, [target.name]: target.value },
+        currentStu: { ...currentStu, [target.name]: target.value },
+      });
+    }
+  };
+
+  handleStuRef = (element) => {
+    if (!element) return;
+
+    // judge if elements with the same input "name" is there
+    let tempRef = [];
+    if (this.stuFormRefs.length > 0) {
+      tempRef = this.stuFormRefs.filter(
+        (item) => item.elementsName === element.name
+      );
+    }
+
+    // if there's no such element with the same input "name"
+    if (tempRef.length === 0) {
+      this.stuFormRefs = [
+        ...this.stuFormRefs,
+        {
+          elementsName: element.name,
+          elementsType: element.type,
+          elements: [element],
+        },
+      ];
+      // if there're already elements with the same input "name"
+    } else {
+      this.stuFormRefs = this.stuFormRefs.map((ref) => {
+        return ref.elementsName === element.name
+          ? { ...ref, elements: [...ref.elements, element] }
+          : ref;
       });
     }
   };
@@ -174,6 +284,7 @@ export default class DataProvider extends Component {
       addStudent,
       setCurrentStu,
       handleStuFormChange,
+      handleStuRef,
     } = this;
     return (
       <Context.Provider
@@ -186,6 +297,7 @@ export default class DataProvider extends Component {
           addStudent,
           setCurrentStu,
           handleStuFormChange,
+          handleStuRef,
         }}
       >
         {this.props.children}

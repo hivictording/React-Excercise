@@ -6,17 +6,10 @@ import { Context } from "../../../context";
 export default class SingleInfo extends Component {
   static contextType = Context;
 
-  handleEdit = (id) => {
-    const { setCurrentStu } = this.context;
-
-    // event.preventDefault();
-    setCurrentStu(id);
-  };
-
   render() {
     const { index, id, username, gender, department } = this.props;
-    // console.log(setCurrentStu);
-    // console.log(this.props);
+    const { setCurrentStu } = this.context;
+
     return (
       <tr className="text-center">
         <th scope="col">{index + 1}</th>
@@ -27,7 +20,7 @@ export default class SingleInfo extends Component {
           <a
             href="#"
             className="text-secondary"
-            onClick={() => this.handleEdit(id)}
+            onClick={() => setCurrentStu(id)}
           >
             <FaEdit />
           </a>

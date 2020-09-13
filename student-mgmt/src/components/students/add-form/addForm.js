@@ -1,129 +1,25 @@
 import React, { Component } from "react";
-import { v4 as uuid } from "uuid";
 
 import { Context } from "../../../context";
 
 export default class AddStudentForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      // id: uuid(),
-      // username: "",
-      // firstname: "",
-      // lastname: "",
-      // gender: "",
-      // age: "",
-      // country: "",
-      // hobbies: [],
-      // department: "",
-      refs: [],
-    };
-
-    this.refObj = {};
-  }
-
   static contextType = Context;
-
-  handleChange = (event) => {
-    const target = event.target;
-    if (target.type === "checkbox") {
-      if (this.state[target.name].includes(target.value)) {
-        this.setState({
-          [target.name]: this.state[target.name].filter(
-            (item) => item !== target.value
-          ),
-        });
-      } else {
-        this.setState({
-          [target.name]: [...this.state[target.name], target.value],
-        });
-      }
-    } else {
-      this.setState({
-        [target.name]: target.value,
-      });
-    }
-  };
-
-  handleRef = (element) => {
-    if (!element) return;
-    if (element.name in this.refObj) {
-      this.refObj[element.name] = [
-        ...this.refObj[element.name],
-        { type: element.type, element: element },
-      ];
-    } else {
-      this.refObj[element.name] = [{ type: element.type, element: element }];
-    }
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // const { addStudent } = this.context;
-    const {
-      addStudent,
-      currentStu: {
-        id,
-        username,
-        firstname,
-        lastname,
-        gender,
-        age,
-        country,
-        hobbies,
-        department,
-      },
-    } = this.context;
-    const fullname = `${firstname} ${lastname}`;
-    addStudent(
-      id,
-      username,
-      fullname,
-      gender,
-      age,
-      country,
-      hobbies,
-      department
-    );
-
-    this.setState({
-      id: uuid(),
-      username: "",
-      firstname: "",
-      lastname: "",
-      gender: "",
-      age: "",
-      country: "",
-      hobbies: [],
-      department: "",
-    });
-
-    for (const values of Object.values(this.refObj)) {
-      values.forEach((value) => {
-        if (value.type === "radio" || value.type === "checkbox") {
-          value.element.checked = false;
-        } else if (value.type === "select-one") {
-          // console.log(value.element.children);
-          value.element.children[0].selected = true;
-        }
-      });
-    }
-
-    this.refObj["username"][0].element.focus();
-  };
 
   render() {
     const {
       departments: { data },
       currentStu: { username, firstname, lastname, age, country },
       handleStuFormChange,
+      handleStuRef,
+      addStudent,
+      editingStu,
     } = this.context;
-    // console.log(currentStu);
-    // const { username, firstname, lastname, age, country } = this.state;
+
     return (
       <form id="add-student-form" className="text-center">
-        <div className="form-title">Add Student</div>
+        <div className="form-title">
+          {editingStu ? "Edit Student" : "Add Student"}
+        </div>
         {/* username */}
         <div className="form-group w-75 mx-auto mb-3 ">
           <label htmlFor="username">Username</label>
@@ -134,7 +30,7 @@ export default class AddStudentForm extends Component {
             name="username"
             value={username}
             onChange={handleStuFormChange}
-            ref={this.handleRef}
+            ref={handleStuRef}
           />
         </div>
 
@@ -149,7 +45,7 @@ export default class AddStudentForm extends Component {
               name="firstname"
               value={firstname}
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
           </div>
           <div className="form-group">
@@ -161,7 +57,7 @@ export default class AddStudentForm extends Component {
               name="lastname"
               value={lastname}
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
           </div>
         </div>
@@ -179,7 +75,7 @@ export default class AddStudentForm extends Component {
               className="form-check-input"
               value="male"
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
             <label className="form-check-label text-capitalize" htmlFor="male">
               male
@@ -193,7 +89,7 @@ export default class AddStudentForm extends Component {
               className="form-check-input"
               value="female"
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
             <label
               className="form-check-label text-capitalize"
@@ -215,7 +111,7 @@ export default class AddStudentForm extends Component {
               name="age"
               value={age}
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
           </div>
           <div className="form-group">
@@ -227,7 +123,7 @@ export default class AddStudentForm extends Component {
               name="country"
               value={country}
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
           </div>
         </div>
@@ -243,7 +139,7 @@ export default class AddStudentForm extends Component {
               className="form-check-input"
               value="travel"
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
             <label
               className="form-check-label text-capitalize"
@@ -260,7 +156,7 @@ export default class AddStudentForm extends Component {
               className="form-check-input"
               value="reading"
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
             <label
               className="form-check-label text-capitalize"
@@ -277,7 +173,7 @@ export default class AddStudentForm extends Component {
               className="form-check-input"
               value="fishing"
               onChange={handleStuFormChange}
-              ref={this.handleRef}
+              ref={handleStuRef}
             />
             <label
               className="form-check-label text-capitalize"
@@ -297,7 +193,7 @@ export default class AddStudentForm extends Component {
             className="custom-select custom-select-sm"
             defaultValue=""
             onChange={handleStuFormChange}
-            ref={this.handleRef}
+            ref={handleStuRef}
           >
             <option value="">Select a department</option>
             {data &&
@@ -311,9 +207,9 @@ export default class AddStudentForm extends Component {
 
         <button
           className="btn btn-info btn-sm text-capitalize"
-          onClick={this.handleSubmit}
+          onClick={addStudent}
         >
-          add student
+          {editingStu ? "Edit Student" : "Add Student"}
         </button>
       </form>
     );
