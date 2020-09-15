@@ -11,7 +11,7 @@ export default class SingleInfo extends Component {
     const { setCurrentStu, deleteStudent } = this.context;
 
     return (
-      <tr className="text-center">
+      <tr className="single-student text-center">
         <th scope="col">{index + 1}</th>
         <td scope="row">{username}</td>
         <td scope="row">{gender}</td>

@@ -18,7 +18,7 @@ export default class StudentInfo extends Component {
         {loading || (
           <table className="table table-striped">
             <thead>
-              <tr className="text-center">
+              <tr className="student-info-title text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Username</th>
                 <th scope="col">Gender</th>

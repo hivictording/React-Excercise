@@ -8,6 +8,9 @@ import StudentInfo from "../components/students/info";
 
 const StudentInfoWrapper = styled.div`
   font-size: 0.65rem;
+  & .single-student:hover {
+    background: \$primary-color-3;
+  }
 `;
 
 export default class StudentsPage extends Component {
