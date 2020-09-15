@@ -6,9 +6,8 @@ import AddStudentForm from "../components/students/add-form";
 import SearchStudentForm from "../components/students/search-form";
 import StudentInfo from "../components/students/info";
 
-const StudentInfo2 = styled(StudentInfo)`
-  color: red;
-  font-size: 0.3rem;
+const StudentInfoWrapper = styled.div`
+  font-size: 0.65rem;
 `;
 
 export default class StudentsPage extends Component {
@@ -21,7 +20,9 @@ export default class StudentsPage extends Component {
           <SearchStudentForm />
         </div>
         <div className="students-right p-1">
-          <StudentInfo2 />
+          <StudentInfoWrapper>
+            <StudentInfo />
+          </StudentInfoWrapper>
         </div>
       </main>
     );

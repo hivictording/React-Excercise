@@ -32,6 +32,7 @@ export default class AddStudentForm extends Component {
             value={username}
             onChange={handleStuFormChange}
             ref={handleStuRef}
+            autoFocus={true}
           />
         </div>
 
