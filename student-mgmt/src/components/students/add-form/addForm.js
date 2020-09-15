@@ -11,7 +11,8 @@ export default class AddStudentForm extends Component {
       currentStu: { username, firstname, lastname, age, country },
       handleStuFormChange,
       handleStuRef,
-      addStudent,
+      saveStudent,
+      cancelStuEdit,
       editingStu,
     } = this.context;
 
@@ -207,10 +208,19 @@ export default class AddStudentForm extends Component {
 
         <button
           className="btn btn-info btn-sm text-capitalize"
-          onClick={addStudent}
+          onClick={saveStudent}
         >
           {editingStu ? "Edit Student" : "Add Student"}
         </button>
+
+        {editingStu && (
+          <button
+            className="btn btn-info btn-sm text-capitalize ml-2"
+            onClick={cancelStuEdit}
+          >
+            cancel edit
+          </button>
+        )}
       </form>
     );
   }

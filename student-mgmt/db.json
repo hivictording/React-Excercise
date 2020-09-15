@@ -1,82 +1,29 @@
 {
   "students": [
     {
-      "id": "c778e0ac-1efa-4d7d-a02c-5983551d4518",
+      "username": "hiboxgrove",
+      "fullname": "copper creek",
+      "gender": "male",
+      "age": "30",
+      "country": "British",
+      "hobbies": [
+        "reading",
+        "travel"
+      ],
+      "department": "Man City",
+      "id": "beb3c5cc-e454-4348-8987-641e006402e1"
+    },
+    {
+      "id": "82d3fe80-d121-43e7-bdab-b8210d58c2a6",
       "username": "himary",
       "fullname": "Ruhui Zhu",
       "gender": "female",
-      "age": "38",
-      "country": "Canada",
+      "age": "20",
+      "country": "Spain",
       "hobbies": [
-        "reading",
-        "travel"
+        "reading"
       ],
-      "department": "Inter Milan"
-    },
-    {
-      "id": "1e5c0211-c0ce-416c-9984-378d7a2e9bdf",
-      "username": "hivictor",
-      "fullname": "Jianbo DING",
-      "gender": "male",
-      "age": "45",
-      "country": "Canada",
-      "hobbies": [
-        "travel",
-        "fishing"
-      ],
-      "department": "Real Madrid"
-    },
-    {
-      "id": "e7dc0b0e-b1f3-4584-b88a-f6b3819b34ad",
-      "username": "root",
-      "fullname": "Jianbo DING",
-      "gender": "female",
-      "age": "15",
-      "country": "Canada",
-      "hobbies": [
-        "reading",
-        "fishing"
-      ],
-      "department": "Paris"
-    },
-    {
-      "id": "50fba60c-cb94-44d5-9c0f-576bc3e6f4b3",
-      "username": "himario",
-      "fullname": "Yiyang DING",
-      "gender": "male",
-      "age": "7",
-      "country": "Canada",
-      "hobbies": [
-        "reading",
-        "travel"
-      ],
-      "department": "Man City"
-    },
-    {
-      "id": "cce916db-5175-40bd-93b2-4bba1ba70310",
-      "username": "hitoronto",
-      "fullname": "Jianbo DING",
-      "gender": "female",
-      "age": "22",
-      "country": "Canada",
-      "hobbies": [
-        "travel",
-        "fishing"
-      ],
-      "department": "Man United"
-    },
-    {
-      "id": "bab36d3f-56db-4bc9-95a2-16b20a601ea7",
-      "username": "himarkham",
-      "fullname": "Jianbo DING",
-      "gender": "male",
-      "age": "15",
-      "country": "Canada",
-      "hobbies": [
-        "reading",
-        "travel"
-      ],
-      "department": "Real Madrid"
+      "department": "Barcelona"
     }
   ],
   "departments": [
@@ -111,9 +58,9 @@
       "director": "Lampard"
     },
     {
-      "id": "aaf2d096-c29a-47cf-b7b4-57463b273faa",
-      "name": "Leeds Utd",
-      "director": "Balsa"
+      "id": "e7290e44-42b7-4517-90a8-3ed63df9968e",
+      "name": "Barcelona",
+      "director": "Coman"
     }
   ]
 }

@@ -50,12 +50,6 @@ export default class DataProvider extends Component {
 
   addDepartment = async (id, name, director) => {
     await axios.post(`${URL}/departments`, { id, name, director });
-    // this.setState({
-    //   departments: {
-    //     loading: false,
-    //     data: [...this.state.departments.data, { id, name, director }],
-    //   },
-    // });
 
     await this.setDepartments();
   };
@@ -91,9 +85,39 @@ export default class DataProvider extends Component {
     }
   };
 
-  addStudent = async (event) => {
+  clearStuForm = () => {
+    this.setState({
+      currentStu: {
+        id: uuid(),
+        username: "",
+        firstname: "",
+        lastname: "",
+        gender: "",
+        age: "",
+        country: "",
+        hobbies: [],
+        department: "",
+      },
+      editingStu: false,
+    });
+
+    this.stuFormRefs.forEach((ref) => {
+      if (ref.elementsType === "radio" || ref.elementsType === "checkbox") {
+        ref.elements.forEach((element) => (element.checked = false));
+      } else if (ref.elementsType === "select-one") {
+        ref.elements[0].children[0].selected = true;
+      }
+    });
+
+    this.stuFormRefs
+      .filter((ref) => ref.elementsName === "username")[0]
+      .elements[0].focus();
+  };
+
+  saveStudent = async (event) => {
     event.preventDefault();
-    // add student into database;
+
+    // add or update student into database;
     const {
       id,
       username,
@@ -107,49 +131,57 @@ export default class DataProvider extends Component {
     } = this.state.currentStu;
 
     const fullname = `${firstname} ${lastname}`;
-    await axios.post(`${URL}/students`, {
-      id,
-      username,
-      fullname,
-      gender,
-      age,
-      country,
-      hobbies,
-      department,
-    });
+
+    // if it's a new student
+    const student = await fetchData(`${URL}/students/${id}`);
+    if (!student) {
+      await axios.post(`${URL}/students`, {
+        id,
+        username,
+        fullname,
+        gender,
+        age,
+        country,
+        hobbies,
+        department,
+      });
+    }
+    // if this is a existing student
+    else {
+      await axios.put(`${URL}/students/${id}`, {
+        username,
+        fullname,
+        gender,
+        age,
+        country,
+        hobbies,
+        department,
+      });
+    }
 
     // set student related state
     await this.setStudents();
 
-    this.setState({
-      currentStu: {
-        id: uuid(),
-        username: "",
-        firstname: "",
-        lastname: "",
-        gender: "",
-        age: "",
-        country: "",
-        hobbies: [],
-        department: "",
-      },
-    });
-
-    // Reset form
-    for (const values of Object.values(this.stuFormRefs)) {
-      values.forEach((value) => {
-        if (value.type === "radio" || value.type === "checkbox") {
-          value.element.checked = false;
-        } else if (value.type === "select-one") {
-          value.element.children[0].selected = true;
-        }
-      });
-    }
-    this.stuFormRefs["username"][0].element.focus();
+    this.clearStuForm();
   };
 
-  editStudent = () => {};
-  deleteStudent = () => {};
+  cancelStuEdit = async () => {
+    this.setState({
+      editingStu: false,
+    });
+
+    this.clearStuForm();
+  };
+  deleteStudent = async (id) => {
+    let data = await fetchData(`${URL}/students/${id}`);
+    if (data) {
+      console.log(id);
+      await axios.delete(`${URL}/students/${id}`);
+
+      await this.setStudents();
+    }
+  };
+
   searchStudent = () => {};
 
   setCurrentStu = async (id) => {
@@ -171,6 +203,7 @@ export default class DataProvider extends Component {
     this.setState(
       {
         currentStu: {
+          id,
           username,
           firstname,
           lastname,
@@ -281,7 +314,9 @@ export default class DataProvider extends Component {
       editDepartment,
       deleteDepartment,
       searchDepartment,
-      addStudent,
+      saveStudent,
+      cancelStuEdit,
+      deleteStudent,
       setCurrentStu,
       handleStuFormChange,
       handleStuRef,
@@ -294,7 +329,9 @@ export default class DataProvider extends Component {
           editDepartment,
           deleteDepartment,
           searchDepartment,
-          addStudent,
+          saveStudent,
+          cancelStuEdit,
+          deleteStudent,
           setCurrentStu,
           handleStuFormChange,
           handleStuRef,

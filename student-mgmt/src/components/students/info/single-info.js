@@ -8,7 +8,7 @@ export default class SingleInfo extends Component {
 
   render() {
     const { index, id, username, gender, department } = this.props;
-    const { setCurrentStu } = this.context;
+    const { setCurrentStu, deleteStudent } = this.context;
 
     return (
       <tr className="text-center">
@@ -24,7 +24,11 @@ export default class SingleInfo extends Component {
           >
             <FaEdit />
           </a>
-          <a href="#" className="text-secondary">
+          <a
+            href="#"
+            className="text-secondary"
+            onClick={() => deleteStudent(id)}
+          >
             <FaTrashAlt />
           </a>
         </td>
