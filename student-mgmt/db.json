@@ -14,16 +14,18 @@
       "id": "beb3c5cc-e454-4348-8987-641e006402e1"
     },
     {
-      "id": "82d3fe80-d121-43e7-bdab-b8210d58c2a6",
-      "username": "himary",
-      "fullname": "Ruhui Zhu",
+      "id": "fa1213bc-a534-43fd-ad29-10bd77bd08f9",
+      "username": "hicanada",
+      "fullname": "toronto canada",
       "gender": "female",
-      "age": "20",
-      "country": "Spain",
+      "age": "21",
+      "country": "Canada",
       "hobbies": [
-        "reading"
+        "travel",
+        "reading",
+        "fishing"
       ],
-      "department": "Barcelona"
+      "department": "Liverpool FC"
     }
   ],
   "departments": [

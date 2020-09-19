@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import styled, { ThemeProvider } from "styled-components";
 
+import { setLinkColor } from "../../styles";
+
 const HeaderWrapper = styled.header`
   background: ${(props) => props.theme.color.primaryColor};
   color: ${(props) => props.theme.color.secondaryColor};
@@ -12,15 +14,9 @@ const HeaderWrapper = styled.header`
     font-family: ${(props) => props.theme.font.secondaryFontBold};
   }
 
-  .toggle-color {
-    text-decoration: none;
-    color: lightgrey;
-    transition: all 0.3s linear;
-  }
-
-  .toggle-color:hover {
-    color: lightpink;
-  }
+  ${setLinkColor({
+    attr: ".toggle-color",
+  })}
 `;
 
 export default () => {

@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import StudentMenu from "../components/students/menu";
 import AddStudentForm from "../components/students/add-form";
 import SearchStudentForm from "../components/students/search-form";
 import StudentInfo from "../components/students/info";
 
-const StudentInfoWrapper = styled.div`
+// CSS Helper
+const stuInfoHover = css`
   font-size: 0.65rem;
   & .single-student:hover {
-    background: \$primary-color-3;
+    background: darkgray;
   }
+`;
+
+const StudentInfoWrapper = styled.div`
+  ${stuInfoHover}
 `;
 
 export default class StudentsPage extends Component {
