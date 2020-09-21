@@ -1,17 +1,8 @@
-export const setLinkColor = ({
-  attr,
-  color = "lightgrey",
-  hoverColor = "lightpink",
-}) => {
+// notice the destructuring arguments and right-hand
+export const setLinkColor = ({ color = "lightblue" } = {}) => {
   return `
-    ${attr} {
     text-decoration: none;
     color: ${color};
     transition: all 0.3s linear;
-  }
-
-  .toggle-color:hover {
-    color: ${hoverColor};
-  }
     `;
 };

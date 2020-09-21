@@ -14,9 +14,13 @@ const HeaderWrapper = styled.header`
     font-family: ${(props) => props.theme.font.secondaryFontBold};
   }
 
-  ${setLinkColor({
-    attr: ".toggle-color",
-  })}
+  .toggle-color {
+    ${setLinkColor()}
+  }
+
+  .toggle-color:hover {
+    color: lightpink;
+  }
 `;
 
 export default () => {
